@@ -1,0 +1,70 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>home</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content fullscreen>
+
+  <ion-slides #slider class="swiper-no-swiping">
+
+    <ion-slide #slide>
+      <ion-list>
+        <ion-item-sliding *ngFor="let item of [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16]; let i = index">
+          <ion-item (click)="doSomething(item)">
+            <ion-avatar slot="start">
+              <img src="image.png" />
+            </ion-avatar>
+            <ion-label>
+              <h2>Title for item</h2>
+              <h3>Another line here</h3>
+              <p class="ion-text-wrap">
+                Some random stuff here
+              </p>
+            </ion-label>
+          </ion-item>
+          <ion-item-options side="end">
+            <ion-item-option color="danger" (click)="removeAction(item)">
+              Remove
+            </ion-item-option>
+          </ion-item-options>
+        </ion-item-sliding>
+      </ion-list>
+    </ion-slide>
+
+    <ion-slide #slide >
+      <ion-list>
+        <ion-item-sliding *ngFor="let item of [0,1,2,3]; let i = index">
+          <ion-item (click)="doSomething(item)">
+            <ion-avatar slot="start">
+              <img src="image.png" />
+            </ion-avatar>
+            <ion-label>
+              <h2>Title for different item</h2>
+              <h3>Another line here</h3>
+              <p class="ion-text-wrap">
+                Some random stuff here
+              </p>
+            </ion-label>
+          </ion-item>
+          <ion-item-options side="end">
+            <ion-item-option color="danger" (click)="removeAction(item)">
+              Remove
+            </ion-item-option>
+          </ion-item-options>
+        </ion-item-sliding>
+      </ion-list>
+    </ion-slide>
+ 
+  </ion-slides>
+
+
+</ion-content>
+
+<ion-footer>
+  <ion-segment (ionChange)="changeSegment($event)" [value]="this.sliderindex">
+    <ion-segment-button *ngFor="let seg of this.sliderindex" [value]="seg">
+      <ion-label>{{seg}}</ion-label>
+    </ion-segment-button>
+  </ion-segment>
+</ion-footer>
